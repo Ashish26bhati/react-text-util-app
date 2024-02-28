@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Agenda Page style */
+.agenda-block {
+	font-family: 'Open Sans', sans-serif;
+	overflow: hidden;
+	padding-bottom: 130px;
+	width: 100%;
+	max-width: 1230px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 0 auto;
+	color:#545454;
+}
+.agenda-block .nav-tabs {
+    margin-left: 0;
+    border-bottom: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.agenda-block .nav-tabs>li.active>a, .agenda-block .nav-tabs>li.active>a:focus, .agenda-block .nav-tabs>li.active>a:hover {
+    border: 0;
+    color: #fff;
+    background-color: #e00000;
+}
+.agenda-block .nav-tabs>li>a {
+    margin-right: 10px;
+    line-height: 1.42857;
+    border: 0;
+    border-radius: 0;
+    font-size: 18px;
+    color: #515151;
+    background-color: #f7f7f7;
+    padding: 15px 25px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+	font-weight:700;
+}
+
+.timeline {
+	position: relative;
+	margin: 70px 0;
+	font-size: 16px;
+}
+
+.timeline:before {
+	content: "";
+	width: 5px;
+	height: 100%;
+	background-color: #d9d9d9;
+	position: absolute;
+	top: 0;
+	z-index:1;
+}
+
+.timeline__group {
+	position: relative;
+}
+
+.timeline__group:not(:first-of-type) {
+	margin-top: 4rem;
+}
+
+.timeline__date {
+	color: #4a4a4a;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 900;
+	position: absolute;
+	left: 180px;
+	top: 0;
+	font-size: 34px;
+}
+
+.timeline__box {
+	position: relative;
+}
+
+.timeline__box:not(:last-of-type) {
+	margin-bottom: 60px;
+}
+
+.timeline__box:before {
+	content: "";
+	width: 190px;
+	height: 5px;
+	background-color: #d9d9d9;
+	position: absolute;
+	left: 0;
+	z-index: 1;
+}
+
+.timeline__time {
+	min-width: 65px;
+	position: absolute;
+	left: 0;
+	box-sizing: border-box;
+	padding: .5rem 1rem;
+	text-align: center;
+	background-color: #4a4a4a;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 1.25rem;
+	font-weight: 700;
+	display: block;
+	line-height:1;
+	z-index:2;
+}
+
+.timeline__time:before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 10px;
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	margin-left: -15px;
+	background: #d9d9d9;
+	border-bottom: 5px solid #f9fafc;
+}
+
+.timeline__time:after {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 10px;
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	margin-left: -15px;
+	background: #d9d9d9;
+	border-top: 5px solid #f9fafc;
+}
+
+.timeline__post {
+	padding: 0;
+	/* background-color: white; */
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	position: relative;
+	z-index:3;
+}
+
+.timeline__post.timeline__post__three {
+	justify-content: flex-start;
+}
+
+.timeline-content {
+	width: 57%;
+	background: #fff;
+	padding: 15px;
+	-webkit-box-shadow: 0 4px 9px rgba(228, 228, 228, 0.67);
+	-moz-box-shadow: 0 4px 9px rgba(228, 228, 228, 0.67);
+	-ms-box-shadow: 0 4px 9px rgba(228, 228, 228, 0.67);
+	box-shadow: 0 4px 9px rgba(228, 228, 228, 0.67);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	position: relative;
+	z-index: 2;
+	border-radius: 3px 3px 0 0;
+	font-size: 14px;
+	line-height: normal;
+	letter-spacing: normal;
+	border-top: 5px solid #e00000;
+	display: flex;
+	flex-direction: column;
+}
+
+.timeline__post__three .timeline-content {
+	width: 33.33%;
+	margin-right: 2%;
+}
+
+.timeline-content:hover {
+	-webkit-transform: translateY(-10px);
+	transform: translateY(-10px);
+}
+
+.timeline-content h2 {
+	padding: 0;
+	background: #fff;
+	color: #535353;
+	margin: 0;
+	font-weight: 600;
+	-webkit-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+	-ms-border-radius: 3px 3px 0 0;
+	font-size: 14px;
+	letter-spacing: normal;
+	line-height: normal;
+}
+
+.timeline-content h2 strong {
+	padding: 1px 10px;
+	display: inline-block;
+	border: 2px solid #e00000;
+	border-radius: 30px;
+	min-width: 90px;
+	text-align: center;
+	color: #e00000;
+	font-weight:700;
+}
+
+.timeline__post__two:before,
+.timeline__post__three:before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 5px;
+	border: 0;
+	background: #d9d9d9;
+	z-index: 1;
+	width: 50px;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	margin-top: -2.5px;
+}
+
+.timeline__post__three:before {
+	left: 33.33%;
+}
+
+.timeline-content.right {
+	float: right;
+}
+
+.timeline-content.right:before {
+	content: '';
+	right: auto;
+	left: -44px;
+}
+
+.timeline-content.left {
+	float: left;
+}
+
+.agenda-des {
+	margin-top: 35px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 28px;
+}
+
+.agenda-des span {
+	display: block;
+	font-style: italic;
+	font-weight: normal;
+	color: #666;
+	font-size: 18px;
+}
+
+.agenda-speakers {
+	/*margin-top: 30px;*/
+	display: flex;
+	width: 100%;
+	font-size: 18px;
+	font-weight: 600;
+	color: #535353;
+	padding-bottom: 0;
+	/*margin-top: auto;*/
+	flex-wrap: wrap;
+}
+
+.agenda-speakers p {
+	display: none;
+}
+
+.agenda-speakers h3 {
+	font-size: 18px;
+	margin-top: 10px;
+	font-weight: 600;
+	color: #535353;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	flex: 1;
+	min-width: 50%;
+	line-height: 18px;
+}
+
+.agenda-speakers h3 span {
+	display: block;
+	font-size: 15px;
+	margin-top: 5px;
+	color: #999;
+	font-weight: 600;
+}
+
+.agenda-des p {
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 28px;
+}
+
+#timeline .timeline-item .timeline-content.center h2 strong,
+#timeline .timeline-item .timeline-content.left h2 strong,
+#timeline .timeline-item .timeline-content.right h2 strong {
+	margin: 15px;
+	padding-right: 0;
+	border: 1px solid #ff8245;
+	padding: 4px 15px;
+	border-radius: 30px;
+	color: #ff8245;
+}
+
+.mt10 {
+	margin-top: 15px;
+}
+
+.timeline-content.technical-content {
+	border-top-color: #ecbb5b;
+}
+
+.timeline-content.technical-content h2 strong {
+	color: #ecbb5b;
+	border-color: #ecbb5b;
+}
+
+.timeline-content.business-content {
+	border-top-color: #85d2ee;
+}
+
+.timeline-content.business-content h2 strong {
+	color: #85d2ee;
+	border-color: #85d2ee;
+}
+
+.agenda-block .clearfix {
+	display: block;
+	overflow: hidden;
+	clear: both;
+	height: 100px;
+}
+
+#timeline .timeline-item .timeline-content.center:before {
+	display: none;
+}
+
+.break-content:after {
+	content: "";
+	background: url(https://meetmagento.sg/wp-content/uploads/2020/11/break-bg-removebg-preview.png) repeat-x center center;
+	width: calc(100% + 300px);
+	height: 158px;
+	display: block;
+	position: absolute;
+	left: -150px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.break-content .timeline__post {
+	background-color: transparent;
+}
+
+.break-content .timeline__time {
+	background-color: #fff;
+	-webkit-box-shadow: inset 0 0 0 1px #e8755a;
+	box-shadow: inset 0 0 0 1px #e00000;
+	color: #e00000;
+}
+
+.break-content .timeline-content {
+	border-top: 0;
+	box-shadow: none;
+	display: block;
+	text-align: center;
+	width: 385px;
+	min-height: 158px;
+}
+
+.break-content .timeline-content .sponsor-meal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.break-content .timeline-content .sponsor-meal span {
+	background-color: #E00000;
+	color: #fff;
+	margin: 6px auto 0 auto;
+	display: inline-block;
+	padding: 2px 16px 4px 16px;
+	border-radius: 2px;
+}
+
+.break-content .timeline-content img {
+	display: inline-block;
+	width: auto;
+	max-height: 100px;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.break-content .timeline-content:hover img {
+	-webkit-transform: translateY(-5px);
+	transform: translateY(-5px);
+}
+
+.break-content .timeline-content p {
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 28px;
+	text-align: center;
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+
+.break-content .timeline-content p span {
+	font-size: 15px;
+	line-height: 20px;
+	display: block;
+	padding-bottom: 7px;
+	color: #999;
+	font-weight: 600;
+}
+
+.break-content .timeline-content:hover {
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+}
+.agenda-note {
+    margin-top: -40px;
+}
+
+@media screen and (min-width: 641px) {
+	#Aug27 {
+		background: url(https://meetmagento.sg/wp-content/uploads/2020/11/MM-Abstract.png) no-repeat right top;
+	}
+	.timeline:before {
+		left: 74px;
+	}
+	.timeline__group {
+		padding-top: 55px;
+	}
+	.timeline__box {
+		padding-left: 180px;
+	}
+	.timeline__box:before {
+		top: 50%;
+		margin-top: -2.5px;
+	}
+	.timeline__time {
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	.timeline {
+		margin-left: 50px;
+		margin-right: 50px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.timeline {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.timeline {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.timeline:before {
+		left: 0;
+	}
+	.timeline__group {
+		padding-top: 40px;
+	}
+	.timeline__box {
+		padding-left: 20px;
+		padding-top: 50px;
+	}
+	.timeline__box:before {
+		top: 70px;
+	}
+	.timeline__date {
+		left: 20px;
+	}
+	.timeline__post__two:before,
+	.timeline__post__three:before {
+		display: none;
+	}
+	.business-content:before,
+	.timeline__post__three .timeline-content:nth-child(2):before {
+		content: '';
+		position: absolute;
+		left: 0;
+		margin-left: -20px;
+		top: 20px;
+		height: 5px;
+		border: 0;
+		background: #d9d9d9;
+		z-index: -1;
+		width: 20px;
+	}
+	.timeline__time {
+		top: 0;
+		left: 20px;
+	}
+	.timeline__time:before {
+		top: 50%;
+		left: 0;
+		height: 5px;
+		margin-top: -2.5px;
+		margin-left: -15px;
+		background: #d9d9d9;
+		border-bottom: 0;
+		z-index: -1;
+		width:15px;
+	}
+	.timeline__time:after {
+		display: none;
+	}
+	.timeline__post {
+		flex-direction: column;
+	}
+	.timeline-content,
+	.timeline__post__three .timeline-content {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.break-content .timeline-content{
+		width:100%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#timeline {
+		margin: 30px;
+		padding: 0px;
+		width: 90%;
+	}
+	#timeline:before {
+		left: 0;
+	}
+	#timeline .timeline-item .timeline-content {
+		width: 90%;
+		float: right;
+	}
+}
+
+    </style>
+</head>
+<body>
+
+    I have leard the lots of thing  while woking on different project since last review
+	like woking on two big commerce project it was great experience working with this framework like and they are sucessfully
+	running now (hyde park and Holiball). then working with magento project for short time it was also great experience to write a code in Less enviroment in magento(ZZ-medical). recently I have worked with two WordPress projects that is Career website and Meet-magento-- in this i am single person to handle both projects. now currenly i am working on wagento redesign website and working for this poject from scratche it is other level of expericece to work any indudal project from start and write a code fro the same.
