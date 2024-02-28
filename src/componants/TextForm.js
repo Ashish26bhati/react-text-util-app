@@ -42,7 +42,7 @@ const[text,sateText]= useState('');
               {/* <label for="myBox" className="form-label">{props.heading}</label> */}
               <textarea className="form-control" id="myBox" rows="8" value={text} style={{background :props.mode==='dark'?'#121212':'white', color:props.mode==='dark'?'white':'black'}}  onChange={handleOneChange}></textarea>
           </div>
-          <button className="btn btn-primary mx-1" onClick={handleUpclick}>Convert to Upeercase</button>
+          <button className="btn btn-primary mx-1 " onClick={handleUpclick}>Convert to Upeercase</button>
           <button className="btn btn-primary mx-1" onClick={handleLowclick}>Convert to Lowercase</button>
           <button className="btn btn-primary mx-1" onClick={handleClearclick}>clear text</button>
           <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
