@@ -33,14 +33,13 @@ export default function TextForm(props) {
 
   }
 const[text,sateText]= useState('');
-
   return (
       <>
         <div className="container my-3" style={{color :props.mode==='dark'?'white':'black'}}>
             <h1>{props.heading}- </h1>
           <div className="mb-3">
               {/* <label for="myBox" className="form-label">{props.heading}</label> */}
-              <textarea className="form-control" id="myBox" rows="8" value={text} style={{background :props.mode==='dark'?'#121212':'white', color:props.mode==='dark'?'white':'black'}}  onChange={handleOneChange}></textarea>
+              <textarea className="form-control" id="myBox" rows="10" value={text} style={{background :props.mode==='dark'?'#121212':'white', color:props.mode==='dark'?'white':'black'}}  onChange={handleOneChange}></textarea>
           </div>
           <button className="btn btn-primary mx-1 " onClick={handleUpclick}>Convert to Upeercase</button>
           <button className="btn btn-primary mx-1" onClick={handleLowclick}>Convert to Lowercase</button>
